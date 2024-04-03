@@ -1,0 +1,165 @@
+body {
+    background-image: url('./images/uno-BG.jpg');
+    background-size: cover;
+    height: 100%;
+    margin: 0;
+}
+
+.box {
+
+    padding: 25px;
+    height: 500px;
+    width: 700px;
+    background-color: aliceblue;
+    position: relative;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 5%;
+    -webkit-filter: drop-shadow(3px 5px 5px #000000);
+    filter: drop-shadow(3px 5px 5px #0000007e);
+}
+
+.titles {
+    color: rgb(38, 0, 126);
+    padding-top: 15px;
+    text-transform: capitalize;
+    display: flex;
+    justify-content: first baseline;
+    align-items: center;
+}
+
+.title {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    padding-left: 30px;
+    width: 170px;
+    height: 40px;
+}
+
+.column {
+    margin-top: 20px;
+}
+
+.user {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    padding-left: 30px;
+}
+
+
+
+.uno-logo {
+    width: 250px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    cursor: pointer;
+}
+
+.uno-logo:hover {
+    width: 255px;
+    -webkit-filter: drop-shadow(3px 5px 5px #000000);
+    filter: drop-shadow(3px 5px 5px #00000088);
+}
+
+.plus {
+    width: 130px;
+    box-shadow: none;
+    outline: none;
+}
+
+.new_user {
+    border-radius: 55px;
+    margin-left: 30px;
+    margin-top: 30px;
+    font-weight: bolder;
+    background-color: rgb(255, 255, 255);
+    width: 35px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.new_user:hover {
+    border-radius: 5px;
+    background-color: rgb(238, 238, 238);
+    color: rgb(73, 73, 73);
+
+}
+
+@keyframes fireAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.fire-animation {
+    animation: fireAnimation 2s linear infinite alternate;
+    background-size: 200% 200%;
+    background-image: linear-gradient(to right, #ff0000 0%, #ff4d00 25%, #fffb00 50%, #ff4d00 75%, #ff0000 100%);
+}
+
+
+
+@media (max-width: 600px) {
+
+    body {
+        background-image: url('./images/uno-BG-mobile.jpg');
+        background-size: cover;
+        height: 100%;
+        margin: 0;
+    }
+
+    .box {
+
+        padding: 15px;
+        height: 90vh;
+        width: 380px;
+        background-color: rgba(255, 255, 255, 0.916);
+        position: relative;
+        margin: auto;
+        margin-top: 20px;
+        border-radius: 1%;
+
+    }
+
+
+    .user {
+        display: grid;
+        grid-template-columns: 130px 100px 100px;
+        padding-left: 30px;
+    }
+
+    .current_count {
+        font-weight: bolder;
+        color: #340383;
+    }
+
+    .plus {
+        width: 95px;
+        box-shadow: none;
+        outline: none;
+    }
+
+    .new_user {
+        border-radius: 55px;
+        margin-left: 0px;
+        margin-top: 20px;
+        font-weight: bolder;
+        background-color: rgb(255, 255, 255);
+        width: 45px;
+        height: 40px;
+        cursor: pointer;
+    }
+
+
+
+}
