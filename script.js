@@ -1,33 +1,38 @@
 let count = 2;
 
+
 function addUser() {
-    let div = document.createElement('div')
-    div.className = "user";
-    div.id = count++;
+    let inputs = document.querySelectorAll('input');
+    let numberOfInputs = inputs.length;
 
-    let divName = document.createElement('div');
-    divName.className = "player_name";
-    let textNodeName = document.createTextNode('введите имя');
-    divName.appendChild(textNodeName);
+    if (numberOfInputs < 10) {
+        let div = document.createElement('div')
+        div.className = "user";
+        div.id = count++;
 
-    let divCount = document.createElement('div');
-    divCount.className = "current_count";
-    let textNodeCount = document.createTextNode('0');
-    divCount.appendChild(textNodeCount);
+        let divName = document.createElement('div');
+        divName.className = "player_name";
+        let textNodeName = document.createTextNode('введите имя');
+        divName.appendChild(textNodeName);
 
-    let divInput = document.createElement('input');
-    divInput.type = 'text';
-    divInput.value = '0';
-    divInput.className = 'plus';
+        let divCount = document.createElement('div');
+        divCount.className = "current_count";
+        let textNodeCount = document.createTextNode('0');
+        divCount.appendChild(textNodeCount);
 
-    div.appendChild(divName);
-    div.appendChild(divCount);
-    div.appendChild(divInput);
+        let divInput = document.createElement('input');
+        divInput.type = 'text';
+        divInput.value = '';
+        divInput.className = 'plus';
 
-    document.querySelector('.column').appendChild(div);
+        div.appendChild(divName);
+        div.appendChild(divCount);
+        div.appendChild(divInput);
 
-    console.log('User added');
+        document.querySelector('.column').appendChild(div);
 
+        console.log('User added');
+    }
 };
 
 document.querySelector('.column').addEventListener('click', function (event) {
@@ -40,14 +45,12 @@ document.querySelector('.column').addEventListener('click', function (event) {
 
         event.target.replaceWith(inputElement);
 
-
         inputElement.focus();
-
 
         inputElement.addEventListener('blur', function () {
 
             let newName = inputElement.value.trim();
-            if (newName.length > 0 && newName.length > 3) {
+            if (newName.length > 0 && newName.length > 2) {
                 event.target.textContent = newName;
             } else {
                 event.target.textContent = 'введите имя';
@@ -57,9 +60,7 @@ document.querySelector('.column').addEventListener('click', function (event) {
     }
 });
 
-
-
-document.querySelector('.uno-logo').addEventListener('click', function () {
+function addNumbers() {
     let users = document.querySelectorAll('.user');
     let scores = {};
 
@@ -85,50 +86,72 @@ document.querySelector('.uno-logo').addEventListener('click', function () {
 
         user.querySelector('.current_count').textContent = scores[userId];
     });
+}
+
+document.querySelector('.uno-logo').addEventListener('click', function () {
+    addNumbers();
 });
-
-
 
 document.querySelector('.uno-logo').addEventListener('click', function () {
     document.querySelectorAll('.plus').forEach(input => {
-        input.value = '0'; // Устанавливаем значение '0' для каждого инпута
+        input.value = '';
     });
 });
 
 
-document.querySelector('.uno-logo').addEventListener('click', function () {
+function champions() {
     let users = document.querySelectorAll('.user');
     let maxScore = -Infinity;
     let championUsers = [];
 
-
     users.forEach(user => {
         let currentCount = parseInt(user.querySelector('.current_count').textContent);
-        if (currentCount > maxScore) {
+        if (currentCount > maxScore && currentCount > 0) {
             maxScore = currentCount;
-            championUsers = [user]; // Новый чемпион, очищаем предыдущий массив
+            championUsers = [user];
         } else if (currentCount === maxScore) {
-            championUsers.push(user); // Добавляем пользователя в массив чемпионов
+            championUsers.push(user);
         }
     });
-
 
     users.forEach(user => {
         user.classList.remove('fire-animation');
     });
 
-
     championUsers.forEach(user => {
-
         user.classList.add('fire-animation');
+    });
+}
+
+document.querySelector('.uno-logo').addEventListener('click', function () {
+    champions();
+});
+
+document.querySelector('.new_user').onclick = addUser;
+
+let inputs = document.querySelectorAll('input');
+inputs.forEach(input => {
+    input.addEventListener('keydown', function (event) {
+
+        if (event.key === 'Enter') {
+
+
+        }
     });
 });
 
 
+let column = document.querySelector('.column');
+column.addEventListener('keydown', function (event) {
 
+    if (event.target.classList.contains('plus')) {
 
-
-
-
-
-document.querySelector('.new_user').onclick = addUser;
+        if (event.key === 'Enter') {
+            addNumbers();
+            champions();
+            document.querySelectorAll('.plus').forEach(input => {
+                input.value = '';
+            })
+        }
+    }
+});
