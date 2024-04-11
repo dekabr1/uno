@@ -87,6 +87,21 @@ body {
 
 }
 
+.delete {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.deletex {
+    transform: rotate(45deg);
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
 @keyframes fireAnimation {
     0% {
         background-position: 0% 50%;
@@ -160,6 +175,13 @@ body {
         cursor: pointer;
     }
 
-
+    .delete {
+        position: absolute;
+        top: 5px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+    }
 
 }
