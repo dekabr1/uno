@@ -232,3 +232,8 @@ function loadUsersFromLocalStorage() {
 window.addEventListener('load', function () {
     loadUsersFromLocalStorage();
 });
+
+document.querySelector('.delete').onclick = function () {
+    localStorage.clear();
+    location.reload();
+}
