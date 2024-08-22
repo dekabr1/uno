@@ -117,7 +117,7 @@ body {
 }
 
 .fire-animation {
-    animation: fireAnimation 2s linear infinite alternate;
+    animation: fireAnimation 15s linear infinite alternate;
     background-size: 200% 200%;
     background-image: linear-gradient(to right, #ff0000 0%, #ff4d00 25%, #fffb00 50%, #ff4d00 75%, #ff0000 100%);
 }
